@@ -18,10 +18,26 @@ int _printf(const char *format, ...)
 	{
 		if (*(format + i) == '%')
 		{
-			case '%':
-			_putchar('%');
-			size++;
-			break;
+			switch (*(format + i + 1))
+			{
+				case 'd':
+				case 'i':
+					size +=  print_int(va_arg(args, int));
+					break;
+				case 'c':
+					_putchar(va_arg(args, int));
+					size++;
+					break;
+				case 's':
+					size += _putstr(va_arg(args, char*));
+					break;
+				case '%':
+					_putchar('%');
+					size++;
+					break;
+				default:
+					return (-1);
+					break;
 			}
 		i += 2;
 		}
