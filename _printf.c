@@ -12,7 +12,6 @@ int i, size = 0;
 va_list args;
 
 va_start(args, format);
-i = 0, size = 0;
 while (format && *(format + i) != '\0')
 {
 if (*(format + i) == '%')
@@ -34,7 +33,8 @@ size += _putstr(va_arg(args, char *));
 break;
 case '%':
 _putchar('%');
-size++, break;
+size++;
+break;
 default:
 return (-1);
 }
