@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int i, size;
 	va_list args;
-	
+
 	va_start(args, format);
 	i = 0, size = 0;
 	while (*(format + i) != '\0')
@@ -37,16 +37,13 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					return (-1);
-					break;
 			}
 		i += 2;
 		}
-
 		else
 		{
 			_putchar(*(format + i));
-			size++;
-			i++;
+			size++, i++;
 		}
 	}
 	va_end(args);
